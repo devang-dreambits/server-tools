@@ -93,7 +93,8 @@ class Image(models.Model):
     def _compute_owner_ref_id(self):
         """Get a reference field based on the split model and id fields."""
         for s in self:
-            s.owner_ref_id = "{0.owner_model},{0.owner_id}".format(s)
+            if s.owner_model and s.owner_id:
+                s.owner_ref_id = "{0.owner_model},{0.owner_id}".format(s)
 
     @api.multi
     @api.depends('storage', 'path', 'file_db_store', 'url')
