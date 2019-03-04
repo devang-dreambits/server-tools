@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # © 2014 Serv. Tecnol. Avanzados (http://www.serviciosbaeza.com)
 #        Pedro M. Baeza <pedro.baeza@serviciosbaeza.com>
 # © 2015 Antiun Ingeniería S.L. - Jairo Llopis
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import base64
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import os
 import logging
 from odoo import models, fields, api, exceptions, _
@@ -143,7 +142,7 @@ class Image(models.Model):
         """Allow to download an image and cache it by its URL."""
         if url:
             try:
-                (filename, header) = urllib.urlretrieve(url)
+                (filename, header) = urllib.request.urlretrieve(url)
                 with open(filename, 'rb') as f:
                     return base64.b64encode(f.read())
             except:
