@@ -20,6 +20,7 @@
                         <field name="owner_id"/>
                         <field name="owner_ref_id"/>
                         <field name="sequence"/>
+                        <field name="id"/>
                     </group>
                     <group string="Name">
                         <field name="name"/>
@@ -94,6 +95,8 @@
             <field name="name"/>
             <field name="storage"/>
             <field name="sequence"/>
+            <field name="id"/>
+
             <templates>
                 <t t-name="kanban-box">
                     <div style="position: relative">
